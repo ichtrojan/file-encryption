@@ -50,7 +50,8 @@ class FileRefController extends Controller
         $store = Storage::disk('local')->put('public/'.$file->filename, $decryptedFile);
 
         return response()->download(storage_path("app/public/{$file->filename}"))->deleteFileAfterSend(true);;
-
+      } else {
+        return view('errors.file404');
       }
     }
 
@@ -62,13 +63,16 @@ class FileRefController extends Controller
     }
 
     // This function generates the hash
-    public function generateRandomString ($length = 10) {
+    public function generateRandomString ($length = 10)
+    {
       $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+
       $charactersLength = strlen($characters);
+
       $randomString = '';
 
       for ($i = 0; $i < $length; $i++) {
-          $randomString .= $characters[rand(0, $charactersLength - 1)];
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
       }
 
       return $randomString;
