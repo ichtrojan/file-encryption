@@ -61,6 +61,7 @@ class FileRefController extends Controller
       return view('all', compact('infos'));
     }
 
+    // This function generates the hash
     public function generateRandomString ($length = 10) {
       $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
       $charactersLength = strlen($characters);
