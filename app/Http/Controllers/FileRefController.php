@@ -55,6 +55,18 @@ class FileRefController extends Controller
       }
     }
 
+    // This method handles the file decryption and download
+    public function downloadEncrypted ($ref)
+    {
+      if (FileRef::Where('ref', $ref)->exists()) {
+        $file = FileRef::Where('ref', $ref)->first();
+
+        return response()->download(storage_path("app/{$file->filename}.dat"))->deleteFileAfterSend(true);;
+      } else {
+        return view('errors.file404');
+      }
+    }
+
     // This method returns all encrypted files along with their download link
     public function listAll()
     {

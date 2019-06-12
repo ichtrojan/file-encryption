@@ -20,7 +20,7 @@
                         @foreach($infos as $info)
                         <tr>
                           <td>{{$info->filename}}</td>
-                          <td><a href="/download/{{$info->ref}}"><button class="btn btn-primary">Decrypt and Download</button></a></td>
+                          <td><a href="/download/{{$info->ref}}"><button class="btn btn-primary">Decrypt and Download</button></a></br><a href="/download/encrypted/{{$info->ref}}"><button class="btn btn-danger">Download Encrypted File</button></a></td>
                         </tr>
                         @endforeach
                       </tbody>

@@ -26,3 +26,5 @@ Route::post('upload-file', 'FileRefController@upload');
 Route::get('all', 'FileRefController@listAll');
 
 Route::get('download/{ref}', 'FileRefController@download');
+
+Route::get('download/encrypted/{ref}', 'FileRefController@downloadEncrypted');
